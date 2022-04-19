@@ -98,7 +98,7 @@ BODY {
 /*TÄMÄ ON IFRAMEN ID*/
 #mainpage {
     border: 0;
-    padding-top: 30px;
+    padding-top: 1px;
 }
 
 .main-menu {
