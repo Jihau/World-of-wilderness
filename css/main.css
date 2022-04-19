@@ -10,6 +10,7 @@ BODY {
     font-family: 'Jura', sans-serif;
     font-size: 12pt;
     text-align: center;
+    width: 100%;
 }
 /*RESPONSIVE IF-LAUSE ELI KUN SIVUSTOA KUTISTETAAN NÄMÄ EHDOT TÄYTTYVÄT*/
 @media screen and (max-width: 800px) {
@@ -104,14 +105,13 @@ BODY {
     opacity: 0.9;
     padding-bottom: 5px;
 }
+/*ÄLÄ KOSKE*/
 .body_content{
     width:100%;
     display: flex;
     justify-content: center
 }
-body {
-    width: 100%;
-}
+
 .nav_menu a {
     margin: auto 30px;
 }
