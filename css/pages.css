@@ -29,31 +29,12 @@ button{
     border-radius: 10px; /* roundness of the scroll thumb */
     border: 1px solid rgba(255, 255, 255, 0.55); /* creates padding around scroll thumb */
 }
-
-#map::-webkit-scrollbar {
-    width: 12px; /* width of the entire scrollbar */
-}
-
-#map::-webkit-scrollbar-track {
-    background: rgba(120, 142, 164, 0); /* color of the tracking area */
-}
-
-#map::-webkit-scrollbar-thumb {
-    background-color: rgba(96, 96, 96, 0.52); /* color of the scroll thumb */
-    border-radius: 10px; /* roundness of the scroll thumb */
-    border: 1px solid rgba(255, 255, 255, 0.55); /* creates padding around scroll thumb */
-}
-
 /*ARTIKKELIEN RESPONSIVE-EHDOT KUTISTAESSA*/
 @media screen and (max-width: 800px) {
-    .pageArticle {
+    .pageArticle{
         padding-top: 10px;
         padding-right: 10px;
         justify-content: center;
-    }
-
-    #map {
-        height: 100%;
     }
 }
 /*ARTIKKELIEN RESPONSIVE-EHDOT NORMAALIRESOLUUTIOLLA*/
@@ -63,8 +44,13 @@ button{
         margin: auto 60px;
         justify-content: center;
     }
-    #map {
-        height: 514px;
-        width: 514px;
-    }
+}
+/*ETUSIVUN MAPPIKUVA*/
+.Map img{
+    width: 100%;
+    height: 100%;
+}
+
+#map{
+    height: 580px;
 }
