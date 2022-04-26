@@ -8,3 +8,5 @@ L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/ti
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoiZXJra2lrZWtrb25lbiIsImEiOiJjbDJnOW9qMXEwMTJnM2puemloYzlrZ290In0.VjgzSrX13CE24Mqy3_a9VQ'
 }).addTo(map);
+
+L.marker([60.17604, 24.9386]).addTo(map);
