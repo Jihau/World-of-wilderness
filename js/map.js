@@ -12,7 +12,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/ti
 
 
 function addMarker(x, y){
-    L.marker([x, y]).addTo(map);
+    L.marker([x, y]).addTo(map).bindPopup("")
 }
 
 async function birds(){
@@ -25,19 +25,26 @@ async function birds(){
         redirect: 'follow'
     };
 
+    let lat,lng,birdName;
+    function addMarker(x, y, name){
+        L.marker([x, y]).addTo(map).bindPopup(name);
+    }
+
     try{
         const api = await fetch("https://api.ebird.org/v2/data/obs/FI/recent", requestOptions);
         if(!api.ok) throw new Error("Something went wrong");
         const result = await api.json();
         lat = result[0].lat;
         lng = result[0].lng;
+        birdName = result[0].comName;
         console.log(lat);
         console.log(lng);
+        addMarker(lat, lng);
+        addMarker(lat, lng, birdName);
     } catch(error){
         console.log(error);
     }
 }
 birds();
-=======
 L.marker([60.17604, 24.9386]).addTo(map);
 
