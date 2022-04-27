@@ -26,11 +26,6 @@ async function birds(){
         redirect: 'follow'
     };
 
-    let lat,lng,birdName;
-    function addMarker(x, y, name){
-        L.marker([x, y]).addTo(map).bindPopup(name);
-    }
-
     try{
         const api = await fetch("https://api.ebird.org/v2/data/obs/FI/recent", requestOptions);
         if(!api.ok) throw new Error("Something went wrong");
