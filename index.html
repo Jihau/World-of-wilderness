@@ -2,45 +2,40 @@
 <html lang="en">
 <head xmlns="http://www.w3.org/1999/xhtml">
     <title>World of Wilderness</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+    <link crossorigin="" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+          integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+          rel="stylesheet"/>
+    <script crossorigin=""
+            integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+            src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+    <script defer src="js/map.js"></script>
 </head>
 <body>
 <div class="body_content">
     <div class="page">
         <div class="nav_menu">
             <div class="pageHeader">
-                <img src="img/style/header.png" alt="head">
+                <img alt="head" src="img/style/header.png">
             </div>
             <div class="main-menu">
-                <a href="blank.html" target="mainpage">
-                    <img src="img/icons/orca-icon.png" alt="orca">
-                </a>
+                <img alt="orca" src="img/icons/orca-icon.png">
+                <button id="birdsButton"><img alt="osprey" src="img/icons/osprey-icon.png"></button>
 
-                <a href="blank.html" target="mainpage">
-                    <img src="img/icons/osprey-icon.png" alt="osprey">
-                </a>
+                <img alt="fox" src="img/icons/fox-icon.png">
 
-                <a href="blank.html" target="mainpage">
-                    <img src="img/icons/fox-icon.png" alt="fox">
-                </a>
+                <img alt="earth" src="img/icons/earth-icon.png">
 
-                <a href="blank.html" target="mainpage">
-                    <img src="img/icons/earth-icon.png" alt="earth">
-                </a>
-
-                <a href="blank.html" target="mainpage">
-                    <img src="img/icons/home.png" alt="home-icon">
-                </a>
+                <img alt="home-icon" src="img/icons/home.png">
             </div>
         </div>
         <div class="pageContent">
-            <iframe name= "mainpage" src="blank.html" id="mainpage">
-            </iframe>
+            <div id="map"></div>
         </div>
     </div>
 </div>
