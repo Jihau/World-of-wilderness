@@ -47,4 +47,3 @@ async function birds(){
 }
 birds();
 L.marker([60.17604, 24.9386]).addTo(map);
-
