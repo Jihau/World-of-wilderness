@@ -14,6 +14,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/ti
 function addMarker(x, y, name, date, howmany){
     L.marker([x, y]).addTo(map).bindPopup("Nimi: " + name + " | Päivämäärä: " + date + " | Kuinka monta: " + howmany);
 }
+
 let lat,lng,birdName,date,howMany;
 async function birds(){
     let myHeaders = new Headers();
@@ -24,6 +25,11 @@ async function birds(){
         headers: myHeaders,
         redirect: 'follow'
     };
+
+    let lat,lng,birdName;
+    function addMarker(x, y, name){
+        L.marker([x, y]).addTo(map).bindPopup(name);
+    }
 
     try{
         const api = await fetch("https://api.ebird.org/v2/data/obs/FI/recent", requestOptions);
@@ -44,4 +50,3 @@ async function birds(){
 birds();
 
 L.marker([60.17604, 24.9386]).addTo(map);
-
