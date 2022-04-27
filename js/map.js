@@ -10,10 +10,10 @@ L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/ti
 }).addTo(map);
 
 
-function addMarker(x, y){
-    L.marker([x, y]).addTo(map);
+function addMarker(x, y, name, date, howmany){
+    L.marker([x, y]).addTo(map).bindPopup("Nimi: " + name + " | Päivämäärä: " + date + " | Kuinka monta: " + howmany);
 }
-
+let lat,lng,birdName,date,howMany;
 async function birds(){
     let myHeaders = new Headers();
     myHeaders.append("X-eBirdApiToken", "p291e2j3pm2c");
@@ -30,8 +30,12 @@ async function birds(){
         const result = await api.json();
         lat = result[0].lat;
         lng = result[0].lng;
+        birdName = result[0].comName;
+        date = result[0].obsDt;
+        howMany = result[0].howMany;
         console.log(lat);
         console.log(lng);
+        addMarker(lat, lng, birdName, date, howMany);
     } catch(error){
         console.log(error);
     }
