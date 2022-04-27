@@ -14,16 +14,26 @@ function addMarker(x, y){
     L.marker([x, y]).addTo(map);
 }
 
-let myHeaders = new Headers();
-myHeaders.append("X-eBirdApiToken", "p291e2j3pm2c");
+async function birds(){
+    let myHeaders = new Headers();
+    myHeaders.append("X-eBirdApiToken", "p291e2j3pm2c");
 
-let requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
+    let requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
 
-let api = fetch("https://api.ebird.org/v2/data/obs/FI/recent", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+    try{
+        const api = await fetch("https://api.ebird.org/v2/data/obs/FI/recent", requestOptions);
+        if(!api.ok) throw new Error("Something went wrong");
+        const result = await api.json();
+        lat = result[0].lat;
+        lng = result[0].lng;
+        console.log(lat);
+        console.log(lng);
+    } catch(error){
+        console.log(error);
+    }
+}
+birds();
