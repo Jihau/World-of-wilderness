@@ -8,3 +8,22 @@ L.tileLayer('https://api.mapbox.com/styles/v1/erkkikekkonen/cl2gaq835001514o7bo5
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoiZXJra2lrZWtrb25lbiIsImEiOiJjbDJnOW9qMXEwMTJnM2puemloYzlrZ290In0.VjgzSrX13CE24Mqy3_a9VQ'
 }).addTo(map);
+
+
+function addMarker(x, y){
+    L.marker([x, y]).addTo(map);
+}
+
+let myHeaders = new Headers();
+myHeaders.append("X-eBirdApiToken", "p291e2j3pm2c");
+
+let requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+let api = fetch("https://api.ebird.org/v2/data/obs/FI/recent", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
