@@ -34,7 +34,6 @@ async function birds() {
         const api = await fetch("https://api.ebird.org/v2/data/obs/FI/recent", requestOptions);
         if (api.ok) {
             const result = await api.json();
-            console.log(result);
             for (let i = 0; i < result.length; i++) {
                 lat = result[i].lat;
                 lng = result[i].lng;
