@@ -5,7 +5,8 @@
 }
 
 BODY {
-    background: #3d3d3d;
+    background-image: url("https://wallpapercave.com/wp/wp3845489.jpg");
+    background-size: cover;
     color: white;
     font-family: 'Jura', sans-serif;
     font-size: 12pt;
@@ -106,6 +107,16 @@ BODY {
     border: none;
 }
 
+#animalsButton{
+    background-color: transparent;
+    border: none;
+}
+
+#whalesButton{
+    background-color: transparent;
+    border: none;
+}
+
 .main-menu {
     opacity: 0.9;
     padding-bottom: 5px;
@@ -146,4 +157,28 @@ a:visited {
     background-color: rgba(98, 98, 98, 0.52); /* color of the scroll thumb */
     border-radius: 10px; /* roundness of the scroll thumb */
     border: 1px solid rgba(255, 255, 255, 0.55); /* creates padding around scroll thumb */
+}
+.console-container {
+    width: 300px;
+    height: 480px;
+    text-align: center;
+    min-width: 350px;
+    padding-left: 1000px;
+}
+
+#console {
+    width: 300px;
+    height: 480px;
+    background-color: rgba(28, 28, 28, 0.75);
+    color: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    font-family: 'Jura', sans-serif;
+    resize: none;
+}
+
+#clear{
+    background: rgba(26, 26, 26, 0.84);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.47);
+    font-family: 'Jura', sans-serif;
 }

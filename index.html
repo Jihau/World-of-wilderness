@@ -15,6 +15,7 @@
             integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
             src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
     <script defer src="js/map.js"></script>
+    <script defer src="js/console.js"></script>
 </head>
 <body>
 <div class="body_content">
@@ -24,10 +25,11 @@
                 <img alt="head" src="img/style/header.png">
             </div>
             <div class="main-menu">
-                <img alt="orca" src="img/icons/orca-icon.png">
+                <button id="whalesButton"><img alt="orca" src="img/icons/orca-icon.png"></button>
+
                 <button id="birdsButton"><img alt="osprey" src="img/icons/osprey-icon.png"></button>
 
-                <img alt="fox" src="img/icons/fox-icon.png">
+                <button id="animalsButton"><img alt="fox" src="img/icons/fox-icon.png"></button>
 
                 <img alt="earth" src="img/icons/earth-icon.png">
 
@@ -37,6 +39,9 @@
         <div class="pageContent">
             <div id="map"></div>
         </div>
+        <div class="console-container">
+            <textarea rows="31" readonly id="console"></textarea>
+            <button id="clear" onclick="clearConsole()">Clear console</button>
     </div>
 </div>
 </body>
