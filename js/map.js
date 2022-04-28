@@ -61,7 +61,7 @@ async function whales() {
             name = result[0].family[0].name;
             addMarker(lat, lng, name);
             content = result[0].info[0].content;
-            consoleOutput.value =`Info: ${content}`;
+            consoleOutput.value = `Info: ${content}`;
         }
     } catch (error) {
         throw new Error("Something went wrong");
