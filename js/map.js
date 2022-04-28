@@ -28,7 +28,7 @@ async function birds() {
         method: 'GET', headers: myHeaders, redirect: 'follow'
     };
 
-    let lat, lng, birdName;
+    let lat, lng, birdName, location, date;
 
     try {
         const api = await fetch("https://api.ebird.org/v2/data/obs/FI/recent", requestOptions);
@@ -39,7 +39,11 @@ async function birds() {
                 lng = result[i].lng;
                 birdName = result[i].comName;
                 addMarker(lat, lng, birdName);
+                location = result[i].locName;
+                date = result[i].obsDt;
+                consoleOutput.value += `Name: ${birdName}\nLocation: ${location}\nDate: ${date}\n****************************************************\n`;
             }
+            return result;
         }
     } catch (error) {
         throw new Error("Something went wrong");
