@@ -46,9 +46,6 @@ async function birds() {
     }
 }
 
-let animalsButton = document.getElementById('animalsButton');
-animalsButton.addEventListener('click');
-
 
 let whalesButton = document.getElementById('whalesButton');
 whalesButton.addEventListener('click', whales);
