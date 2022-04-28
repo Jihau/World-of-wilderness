@@ -15,8 +15,8 @@ birdsButton.addEventListener('click', birds);
 // TODO: Remove test marker
 //  L.marker([60.17604, 24.9386]).addTo(map);
 
-function addMarker(x, y, name) {
-    L.marker([x, y]).addTo(map).bindPopup(!name ? "" : name);
+function addMarker(x, y, name, info) {
+    L.marker([x, y]).addTo(map).bindPopup(!name ? "" : name + info);
 }
 
 async function birds() {
@@ -44,3 +44,27 @@ async function birds() {
         throw new Error("Something went wrong");
     }
 }
+
+
+async function whales(){
+    let lng, lat, name, info;
+    try{
+        const api = await fetch("https://api.mol.org/1.x/species/info?scientificname=Eschrichtius%20robustus");
+        if(api.ok) {
+            const result = await api.json();
+            console.log(api);
+            
+            console.log(result[0].info[0].content);
+            lng = result[0].bounds.northEast.lng;
+            lat = result[0].bounds.northEast.lat;
+            name = result[0].family[0].name;
+            info = result[0].info[0].content;
+            addMarker(lat, lng, name, info);
+        }
+        
+    } catch(error){
+        throw new Error("Something went wrong");
+    }
+}
+
+whales();
