@@ -28,10 +28,21 @@ async function birds() {
         method: 'GET', headers: myHeaders, redirect: 'follow'
     };
 
+    let e = document.getElementById("birds");
+    let query = e.value;
+
+    function updateValue() {
+        query = e.value;
+        console.log(query);
+        birds();
+    }
+
+    e.addEventListener('change', updateValue);
+
     let lat, lng, birdName, location, date;
 
     try {
-        const api = await fetch("https://api.ebird.org/v2/data/obs/FI/recent", requestOptions);
+        const api = await fetch(`https://api.ebird.org/v2/data/obs/${query}/recent`, requestOptions);
         if (api.ok) {
             const result = await api.json();
             for (let i = 0; i < result.length; i++) {
