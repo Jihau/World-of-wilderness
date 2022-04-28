@@ -1,4 +1,5 @@
 let map = L.map('map').setView([1, 1], 1.5);
+let consoleOutput = document.getElementById("console");
 
 L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamloYXUiLCJhIjoiY2wyZzM4MnptMDAybTNlbDVydWd4NG1tNCJ9.xX5DfnTTX30CKCHNJnlJpg', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -9,15 +10,15 @@ L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/ti
     accessToken: 'pk.eyJ1IjoiZXJra2lrZWtrb25lbiIsImEiOiJjbDJnOW9qMXEwMTJnM2puemloYzlrZ290In0.VjgzSrX13CE24Mqy3_a9VQ'
 }).addTo(map);
 
-let birdsButton = document.getElementById('birdsButton');
-birdsButton.addEventListener('click', birds);
-
 // TODO: Remove test marker
 //  L.marker([60.17604, 24.9386]).addTo(map);
 
 function addMarker(x, y, name, info) {
     L.marker([x, y]).addTo(map).bindPopup(!name ? "" : name + info);
 }
+
+let birdsButton = document.getElementById('birdsButton');
+birdsButton.addEventListener('click', birds);
 
 async function birds() {
     let myHeaders = new Headers();
@@ -46,25 +47,23 @@ async function birds() {
 }
 
 
-async function whales(){
-    let lng, lat, name, info;
-    try{
+let whalesButton = document.getElementById('whalesButton');
+whalesButton.addEventListener('click', whales);
+
+async function whales() {
+    let lat, lng, name, content;
+    try {
         const api = await fetch("https://api.mol.org/1.x/species/info?scientificname=Eschrichtius%20robustus");
-        if(api.ok) {
+        if (api.ok) {
             const result = await api.json();
-            console.log(api);
-            
-            console.log(result[0].info[0].content);
-            lng = result[0].bounds.northEast.lng;
             lat = result[0].bounds.northEast.lat;
+            lng = result[0].bounds.northEast.lng;
             name = result[0].family[0].name;
-            info = result[0].info[0].content;
-            addMarker(lat, lng, name, info);
+            addMarker(lat, lng, name);
+            content = result[0].info[0].content;
+            consoleOutput.value = `Info: ${content}`;
         }
-        
-    } catch(error){
+    } catch (error) {
         throw new Error("Something went wrong");
     }
 }
-
-whales();
