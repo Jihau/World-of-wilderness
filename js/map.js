@@ -13,8 +13,8 @@ L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/ti
 // TODO: Remove test marker
 //  L.marker([60.17604, 24.9386]).addTo(map);
 
-function addMarker(x, y, name, info) {
-    L.marker([x, y]).addTo(map).bindPopup(!name ? "" : name + info);
+function addMarker(x, y, name) {
+    L.marker([x, y]).addTo(map).bindPopup(!name ? "" : name);
 }
 
 let birdsButton = document.getElementById('birdsButton');
