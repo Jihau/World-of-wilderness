@@ -188,3 +188,10 @@ a:visited {
     border-color: rgba(255, 255, 255, 0.47);
     font-family: 'Jura', sans-serif;
 }
+/*Hidden and visible classes*/
+.hidden{
+    display: none;
+}
+.visible{
+    display: block;
+}

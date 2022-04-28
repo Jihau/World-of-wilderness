@@ -14,17 +14,36 @@ let markersLayer = L.layerGroup().addTo(map);
 // TODO: Remove test marker
 //  L.marker([60.17604, 24.9386]).addTo(map);
 
-function addMarker(x, y, name) {
-    L.marker([x, y]).addTo(markersLayer).bindPopup(!name ? "" : name);
+function addMarker(x, y, name, markerOnClick) {
+    let marker = L.marker([x, y]);
+    let clickFunction = () => {
+        markerOnClick();
+        focusConsoleMessage();
+    }
+    marker.on('click', clickFunction);
+    marker.addTo(markersLayer).bindPopup(!name ? "" : name);
 }
 
 let birdsButton = document.getElementById('birdsButton');
-birdsButton.addEventListener('click', birds);
+birdsButton.addEventListener('click', displayCountrySelector);
+
+function displayCountrySelector(){
+    showHideCountrySelector(true);
+    let birdsMenu = document.getElementById('birdsMenu');
+    birdsMenu.value = "0";
+}
+
+function showHideCountrySelector(show){
+    let countrySelector = document.getElementById('countrySelector');
+    countrySelector.setAttribute('class', show ? 'visible' : 'hidden');
+    clearMarkers();
+    clearConsole();
+}
 
 
 async function birds(country) {
     let myHeaders = new Headers();
-    myHeaders.append("X-eBirdApiToken", "p291e2j3pm2c");
+    myHeaders.append('X-eBirdApiToken', 'p291e2j3pm2c');
 
     let requestOptions = {
         method: 'GET', headers: myHeaders, redirect: 'follow'
@@ -40,19 +59,26 @@ async function birds(country) {
                 lat = result[i].lat;
                 lng = result[i].lng;
                 birdName = result[i].comName;
-                addMarker(lat, lng, birdName);
                 location = result[i].locName;
                 date = result[i].obsDt;
-                consoleOutput.value += `Name: ${birdName}\nLocation: ${location}\nDate: ${date}\n****************************************************\n`;
+                let consoleMessage = `Name: ${birdName}\nLocation: ${location}\nCoordinates: ${lat}, ${lng}\nDate: ${date}\n****************************************************\n`;
+                addMarker(lat, lng, birdName, () => {consoleOutput.value += consoleMessage});
             }
             return result;
         }
     } catch (error) {
-        throw new Error("Something went wrong");
+        throw new Error('Something went wrong');
     }
 }
 
-document.getElementById("birdsMenu").onchange = function (evt){
+function focusConsoleMessage(){
+    const textarea = document.getElementById('console');
+    const end = textarea.value.length;
+    textarea.setSelectionRange(end, end);
+    textarea.focus();
+}
+
+document.getElementById('birdsMenu').onchange = function (evt){
     let value = evt.target.value;
     clearMarkers();
     clearConsole();
@@ -65,12 +91,17 @@ function clearMarkers(){
 
 
 let whalesButton = document.getElementById('whalesButton');
-whalesButton.addEventListener('click', whales);
+whalesButton.addEventListener('click', displayWhales);
+
+function displayWhales(){
+    showHideCountrySelector(false);
+    whales().then();
+}
 
 async function whales() {
     let lat, lng, name, content;
     try {
-        const api = await fetch("https://api.mol.org/1.x/species/info?scientificname=Eschrichtius%20robustus");
+        const api = await fetch('https://api.mol.org/1.x/species/info?scientificname=Eschrichtius%20robustus');
         if (api.ok) {
             const result = await api.json();
             lat = result[0].bounds.northEast.lat;
@@ -81,6 +112,6 @@ async function whales() {
             consoleOutput.value = `Info: ${content}`;
         }
     } catch (error) {
-        throw new Error("Something went wrong");
+        throw new Error('Something went wrong');
     }
 }
