@@ -20,24 +20,14 @@ function addMarker(x, y, name) {
 let birdsButton = document.getElementById('birdsButton');
 birdsButton.addEventListener('click', birds);
 
-async function birds() {
+
+async function birds(country) {
     let myHeaders = new Headers();
     myHeaders.append("X-eBirdApiToken", "p291e2j3pm2c");
 
     let requestOptions = {
         method: 'GET', headers: myHeaders, redirect: 'follow'
     };
-
-    let e = document.getElementById("birds");
-    let query = e.value;
-
-    function updateValue() {
-        query = e.value;
-        console.log(query);
-        birds();
-    }
-
-    e.addEventListener('change', updateValue);
 
     let lat, lng, birdName, location, date;
 
@@ -60,6 +50,15 @@ async function birds() {
         throw new Error("Something went wrong");
     }
 }
+let e = document.getElementById("birdsMenu");
+let query = e.value;
+function updateValue() {
+    query = e.value;
+    console.log(query);
+    birds();
+}
+
+e.addEventListener('change', updateValue);
 
 
 let whalesButton = document.getElementById('whalesButton');

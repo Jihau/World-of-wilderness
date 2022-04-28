@@ -182,3 +182,9 @@ a:visited {
     border-color: rgba(255, 255, 255, 0.47);
     font-family: 'Jura', sans-serif;
 }
+#birdsMenu{
+    background: rgba(26, 26, 26, 0.84);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.47);
+    font-family: 'Jura', sans-serif;
+}
