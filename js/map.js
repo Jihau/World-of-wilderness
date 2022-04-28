@@ -9,12 +9,13 @@ L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/ti
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoiZXJra2lrZWtrb25lbiIsImEiOiJjbDJnOW9qMXEwMTJnM2puemloYzlrZ290In0.VjgzSrX13CE24Mqy3_a9VQ'
 }).addTo(map);
+let markersLayer = L.layerGroup().addTo(map);
 
 // TODO: Remove test marker
 //  L.marker([60.17604, 24.9386]).addTo(map);
 
 function addMarker(x, y, name) {
-    L.marker([x, y]).addTo(map).bindPopup(!name ? "" : name);
+    L.marker([x, y]).addTo(markersLayer).bindPopup(!name ? "" : name);
 }
 
 let birdsButton = document.getElementById('birdsButton');
@@ -32,7 +33,7 @@ async function birds(country) {
     let lat, lng, birdName, location, date;
 
     try {
-        const api = await fetch(`https://api.ebird.org/v2/data/obs/${query}/recent`, requestOptions);
+        const api = await fetch(`https://api.ebird.org/v2/data/obs/${country}/recent`, requestOptions);
         if (api.ok) {
             const result = await api.json();
             for (let i = 0; i < result.length; i++) {
@@ -50,15 +51,16 @@ async function birds(country) {
         throw new Error("Something went wrong");
     }
 }
-let e = document.getElementById("birdsMenu");
-let query = e.value;
-function updateValue() {
-    query = e.value;
-    console.log(query);
-    birds();
+
+document.getElementById("birdsMenu").onchange = function (evt){
+    let value = evt.target.value;
+    clearMarkers();
+    birds(value).then();
 }
 
-e.addEventListener('change', updateValue);
+function clearMarkers(){
+    markersLayer.clearLayers();
+}
 
 
 let whalesButton = document.getElementById('whalesButton');
