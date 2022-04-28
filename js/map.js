@@ -55,6 +55,7 @@ async function birds(country) {
 document.getElementById("birdsMenu").onchange = function (evt){
     let value = evt.target.value;
     clearMarkers();
+    clearConsole();
     birds(value).then();
 }
 
