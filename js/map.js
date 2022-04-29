@@ -104,14 +104,32 @@ async function whales() {
         const api = await fetch('https://api.mol.org/1.x/species/info?scientificname=Eschrichtius%20robustus');
         if (api.ok) {
             const result = await api.json();
-            lat = result[0].bounds.northEast.lat;
-            lng = result[0].bounds.northEast.lng;
-            name = result[0].family[0].name;
-            addMarker(lat, lng, name);
-            content = result[0].info[0].content;
-            consoleOutput.value = `Info: ${content}`;
+            for (let i = 0; i < result.length; i++) {
+                let record = result[i];
+                lat = record.bounds.northEast.lat;
+                lng = record.bounds.northEast.lng;
+                name = record.family[0].name;
+                content = record.info[0].content;
+                let consoleMessage = `Name: ${name}\nCoordinates: ${lat}, ${lng}\nInfo: ${content}\n****************************************************\n`;
+                addMarker(lat, lng, name, () => {consoleOutput.value = consoleMessage});
+            }
         }
     } catch (error) {
         throw new Error('Something went wrong');
+    }
+}
+getImages().then();
+
+async function getImages(){
+    try {
+        const api = await fetch('https://dev-api.mol.org/2.x/species/images/list?scientificname=Eschrichtius%20robustus');
+        if (api.ok) {
+            const result = await api.json();
+            let image = result[0].images[0].asset_url;
+            console.log(image);
+
+        }
+    } catch (error){
+        console.log(error);
     }
 }
