@@ -1,28 +1,8 @@
-let map = L.map('map').setView([1, 1], 1.5);
-let consoleOutput = document.getElementById("console");
-
-L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamloYXUiLCJhIjoiY2wyZzM4MnptMDAybTNlbDVydWd4NG1tNCJ9.xX5DfnTTX30CKCHNJnlJpg', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'jihau/cl2gazbo0000u16o66jok0xt4',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiZXJra2lrZWtrb25lbiIsImEiOiJjbDJnOW9qMXEwMTJnM2puemloYzlrZ290In0.VjgzSrX13CE24Mqy3_a9VQ'
-}).addTo(map);
-let markersLayer = L.layerGroup().addTo(map);
 
 // TODO: Remove test marker
 //  L.marker([60.17604, 24.9386]).addTo(map);
 
-function addMarker(x, y, name, markerOnClick) {
-    let marker = L.marker([x, y]);
-    let clickFunction = () => {
-        markerOnClick();
-        focusConsoleMessage();
-    }
-    marker.on('click', clickFunction);
-    marker.addTo(markersLayer).bindPopup(!name ? "" : name);
-}
+
 
 let birdsButton = document.getElementById('birdsButton');
 birdsButton.addEventListener('click', displayCountrySelector);
@@ -39,7 +19,6 @@ function showHideCountrySelector(show){
     clearMarkers();
     clearConsole();
 }
-
 
 async function birds(country) {
     let myHeaders = new Headers();
@@ -85,20 +64,7 @@ document.getElementById('birdsMenu').onchange = function (evt){
     birds(value).then();
 }
 
-function clearMarkers(){
-    markersLayer.clearLayers();
-}
-
-
-let whalesButton = document.getElementById('whalesButton');
-whalesButton.addEventListener('click', displayWhales);
-
-function displayWhales(){
-    showHideCountrySelector(false);
-    whales().then();
-}
-
-async function whales() {
+/*async function whales() {
     let lat, lng, name, content;
     try {
         const api = await fetch('https://api.mol.org/1.x/species/info?scientificname=Eschrichtius%20robustus');
@@ -117,19 +83,6 @@ async function whales() {
     } catch (error) {
         throw new Error('Something went wrong');
     }
-}
-getImages().then();
+}*/
+//getImages().then();
 
-async function getImages(){
-    try {
-        const api = await fetch('https://dev-api.mol.org/2.x/species/images/list?scientificname=Eschrichtius%20robustus');
-        if (api.ok) {
-            const result = await api.json();
-            let image = result[0].images[0].asset_url;
-            console.log(image);
-
-        }
-    } catch (error){
-        console.log(error);
-    }
-}

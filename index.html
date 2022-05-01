@@ -13,11 +13,15 @@
           rel="stylesheet"/>
     <script crossorigin=""
             integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-            src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+            src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" defer></script>
+    <script defer src="js/main.js"></script>
     <script defer src="js/map.js"></script>
+    <script defer src="js/whales.js"></script>
     <script defer src="js/console.js"></script>
 </head>
 <body>
+<!--TODO: Remove loader in case of better approach-->
+<div class="loader hidden"></div>
 <div class="body_content">
     <div class="page">
         <div class="nav_menu">
