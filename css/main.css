@@ -166,17 +166,6 @@ a:visited {
     padding-left: 1000px;
 }
 
-.loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-    position: relative;
-    z-index: 1000;
-}
-
 .dialogMarker{
     display: flex;
     flex-direction: column;
@@ -198,6 +187,24 @@ a:visited {
 .markerTitle {
     font-size: 14px;
     font-weight: bold;
+}
+
+.loaderContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    animation: spin 2s linear infinite;
+    position: relative;
+    z-index: 1000;
 }
 
 @keyframes spin {

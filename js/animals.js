@@ -1,15 +1,43 @@
-
+const taxon_id_Whales = '152871';
+const taxon_id_Mammals = '40151';
 let whalesButton = document.getElementById('whalesButton');
 whalesButton.addEventListener('click', displayWhales);
 
-function displayWhales(){
-    showHideCountrySelector(false);
-    whales().then();
+let animalsButton = document.getElementById('animalsButton');
+animalsButton.addEventListener('click', displayMammals);
+
+function displayWhales() {
+    displayResults(taxon_id_Whales);
 }
 
-async function whales() {
-    const taxon_id = '152871';
-    const recordPerPage = 1000;
+function displayMammals() {
+    displayResults(taxon_id_Mammals);
+}
+
+function displayResults(taxon_id){
+    showHideCountrySelector(false);
+    showSpinner();
+    getResults(taxon_id).then(() => hideSpinner());
+}
+
+function showSpinner() {
+    let spinner = document.getElementById("loader-container");
+    spinner.className = 'loaderContainer';
+
+    let mainMenu = document.getElementById("main-menu");
+    mainMenu.className = 'main-menu hidden'
+}
+
+function hideSpinner() {
+    let spinner = document.getElementById("loader-container");
+    spinner.className = 'hidden';
+
+    let mainMenu = document.getElementById("main-menu");
+    mainMenu.className = 'main-menu visible'
+}
+
+async function getResults(taxon_id) {
+    const recordPerPage = 10000;
     let url = `https://api.inaturalist.org/v1/observations?verifiable=true&order_by=observations.id&order=desc&page=1&spam=false&taxon_id=${taxon_id}&locale=en-US&per_page=${recordPerPage}`;
     try {
         const api = await fetch(url);
