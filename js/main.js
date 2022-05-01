@@ -1,4 +1,6 @@
-let map = L.map('map').setView([1, 1], 1.5);
+let map = L.map('map').setView([30, 1], 1.5);
+map.setMaxBounds(map.getBounds());
+map.setMinZoom( map.getBoundsZoom( map.options.maxBounds ) );
 let consoleOutput = document.getElementById("console");
 let markersLayer = L.layerGroup().addTo(map);
 L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamloYXUiLCJhIjoiY2wyZzM4MnptMDAybTNlbDVydWd4NG1tNCJ9.xX5DfnTTX30CKCHNJnlJpg', {
