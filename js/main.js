@@ -55,8 +55,8 @@ async function getImages(birdName, sciName, date, lat,lng, location){
         if (api.ok) {
             const result = await api.json();
             let image = result[0].images[0].asset_url;
-            let consoleMessage = `Name: ${birdName}\nLocation: ${location}\nCoordinates: ${lat}, ${lng}\nDate: ${date}\n****************************************************\n`;
-            addMarker(lat, lng, birdName, image, date, () => {consoleOutput.value += consoleMessage});
+            let consoleMessage = `Name: ${birdName}\n\nLocation: ${location}\n\nCoordinates: ${lat}, ${lng}\n\nDate: ${date}\n\ninfo: ${await getWikipediaContent(birdName)}\n`;
+            addMarker(lat, lng, birdName, image, date, () => {consoleOutput.value = consoleMessage});
         }
     } catch (error){
         console.log(error);
