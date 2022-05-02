@@ -16,20 +16,21 @@
             src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" defer></script>
     <script defer src="js/main.js"></script>
     <script defer src="js/map.js"></script>
-    <script defer src="js/whales.js"></script>
+    <script defer src="js/animals.js"></script>
     <script defer src="js/console.js"></script>
     <script defer src="js/countries.js"></script>
 </head>
 <body>
-<!--TODO: Remove loader in case of better approach-->
-<div class="loader hidden"></div>
 <div class="body_content">
     <div class="page">
         <div class="nav_menu">
             <div class="pageHeader">
                 <img alt="head" src="img/style/header.png">
             </div>
-            <div class="main-menu">
+            <div id="loader-container" class="hidden">
+                <div class="loader" id="spinner"></div>
+            </div>
+            <div id="main-menu" class="main-menu">
                 <button id="whalesButton"><img alt="orca" src="img/icons/orca-icon.png"></button>
 
                 <button id="birdsButton"><img alt="osprey" src="img/icons/osprey-icon.png"></button>
