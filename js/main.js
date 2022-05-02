@@ -26,7 +26,7 @@ function clearMarkers(){
     markersLayer.clearLayers();
 }
 
-function addGeoJSONToMap(geoJSON, name, image, observedOn, markerOnClick) {
+function addGeoJSONToMap(geoJSON, name, image, observedOn, imageMedium, markerOnClick) {
     const myStyle = {
         "color": "#ff7800",
         "weight": 5,
@@ -42,11 +42,11 @@ function addGeoJSONToMap(geoJSON, name, image, observedOn, markerOnClick) {
     }
     geoJson.on('click', clickFunction);
 
-    geoJson.addTo(markersLayer).bindPopup(generateLeafletPopUp(!name ? "" : name, image, observedOn));
+    geoJson.addTo(markersLayer).bindPopup(generateLeafletPopUp(!name ? "" : name, image, observedOn, imageMedium));
 }
 
-function generateLeafletPopUp(name, image, observedOn) {
-    return `<div class="dialogMarker"><div class="markerTitle">${name}</div><img src="${image}" style="height: 75px; width: 75px"><div class="observedOn">${observedOn}</div></div>`;
+function generateLeafletPopUp(name, image, observedOn, imageMedium) {
+    return `<div class="dialogMarker"><div class="markerTitle">${name}</div><img src="${image}" alt="${name}" onclick="showImage('${name}','${imageMedium}')" style="height: 75px; width: 75px"><div class="observedOn">${observedOn}</div></div>`;
 }
 
 async function getImages(birdName, sciName, date, lat,lng, location){

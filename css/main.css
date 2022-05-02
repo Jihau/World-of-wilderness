@@ -274,3 +274,37 @@ a:visited {
 #satellite {
     padding-bottom: 10px;
 }
+
+.ui-dialog { z-index: 1001 !important ;}
+
+.ui-widget.ui-widget-content{
+    background: rgba(26, 26, 26, 0.84);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.47);
+    font-family: 'Jura', sans-serif;
+}
+
+.ui-dialog .ui-dialog-title {
+    background: rgba(26, 26, 26, 0);
+    color: #ffffff;
+    font-family: 'Jura', sans-serif;
+    border: none;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    background: rgba(26, 26, 26, 0);
+    color: #ffffff;
+    font-family: 'Jura', sans-serif;
+    border: none;
+}
+
+.ui-button-icon-only .ui-icon {
+    color: #ffffff;
+    font-family: 'Tahoma', sans-serif;
+}
+
+#previewImage {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}

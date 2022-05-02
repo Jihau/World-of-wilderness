@@ -48,6 +48,7 @@ async function getResults(taxon_id) {
             let lat = '';
             let lng = '';
             let image_url = '';
+            let image_url_medium = '';
             let geojson = '';
             let content = '';
             let observedOn = '';
@@ -60,6 +61,8 @@ async function getResults(taxon_id) {
                 lng = geojson ? record.geojson.coordinates[1] : "";
                 image_url = record.taxon.default_photo;
                 image_url = image_url ? image_url.url : "";
+                image_url_medium = record.taxon.default_photo;
+                image_url_medium = image_url_medium ? image_url_medium.medium_url : "";
                 content = record.taxon.wikipedia_url;
                 if (content && !mapDescription[record.taxon.wikipedia_url]) {
                     mapDescription[content] = await getWikipediaContent(lastItem(content));
@@ -68,7 +71,7 @@ async function getResults(taxon_id) {
                 content = mapDescription[content];
                 observedOn = record.observed_on_details.date;
                 let consoleMessage = `Name: ${whaleName}\n\nCoordinates: ${lat}, ${lng}\n\nInfo: ${content}\n`;
-                addGeoJSONToMap(record.geojson, whaleName, image_url, observedOn, () => {
+                addGeoJSONToMap(record.geojson, whaleName, image_url, observedOn, image_url_medium, () => {
                     consoleOutput.value = consoleMessage
                 })
             }
