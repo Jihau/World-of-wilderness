@@ -86,3 +86,4 @@ document.getElementById('birdsMenu').onchange = function (evt){
 }*/
 //getImages().then();
 
+
