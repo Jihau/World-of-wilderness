@@ -14,7 +14,7 @@ function displayMammals() {
     displayResults(taxon_id_Mammals);
 }
 
-function displayResults(taxon_id){
+function displayResults(taxon_id) {
     showHideCountrySelector(false);
     showSpinner();
     getResults(taxon_id).then(() => hideSpinner());
@@ -39,12 +39,12 @@ function hideSpinner() {
 async function getResults(taxon_id) {
     const recordPerPage = 10000;
     let url = `https://api.inaturalist.org/v1/observations?verifiable=true&order_by=observations.id&order=desc&page=1&spam=false&taxon_id=${taxon_id}&locale=en-US&per_page=${recordPerPage}`;
+    let mapDescription = [];
     try {
         const api = await fetch(url);
         if (api.ok) {
             const result = await api.json();
             let whaleName = '';
-            let consoleMessage = '';
             let lat = '';
             let lng = '';
             let image_url = '';
@@ -56,15 +56,21 @@ async function getResults(taxon_id) {
                 whaleName = record.taxon.name;
                 whaleName = whaleName ? whaleName : '';
                 geojson = record.geojson;
-                lat = geojson? record.geojson.coordinates[0] : "";
-                lng = geojson? record.geojson.coordinates[1] : "";
-
+                lat = geojson ? record.geojson.coordinates[0] : "";
+                lng = geojson ? record.geojson.coordinates[1] : "";
                 image_url = record.taxon.default_photo;
-                image_url = image_url? image_url.url : '';
+                image_url = image_url ? image_url.url : "";
                 content = record.taxon.wikipedia_url;
+                if (content && !mapDescription[record.taxon.wikipedia_url]) {
+                    mapDescription[content] = await getWikipediaContent(lastItem(content));
+                    mapDescription[content] = mapDescription[content].trim();
+                }
+                content = mapDescription[content];
                 observedOn = record.observed_on_details.date;
-                let consoleMessage = `Name: ${whaleName}\nCoordinates: ${lat}, ${lng}\nInfo: ${content}\n****************************************************\n`;
-                addGeoJSONToMap(record.geojson, whaleName, image_url, observedOn, () => {consoleOutput.value += consoleMessage})
+                let consoleMessage = `Name: ${whaleName}\nCoordinates: ${lat}, ${lng}\nInfo: ${content}\n`;
+                addGeoJSONToMap(record.geojson, whaleName, image_url, observedOn, () => {
+                    consoleOutput.value = consoleMessage
+                })
             }
         }
     } catch (error) {

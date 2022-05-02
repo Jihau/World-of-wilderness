@@ -36,7 +36,6 @@ function addGeoJSONToMap(geoJSON, name, image, observedOn, markerOnClick) {
         style: myStyle
     });
 
-
     let clickFunction = () => {
         markerOnClick();
         focusConsoleMessage();
@@ -62,4 +61,21 @@ async function getImages(birdName, sciName, date, lat,lng, location){
     } catch (error){
         console.log(error);
     }
+}
+
+const lastItem = (path) => path.substring(path.lastIndexOf('/') + 1);
+
+async function getWikipediaContent(title) {
+    let content = '';
+    let url = `https://en.wikipedia.org/api/rest_v1/page/summary/${title}`;
+    try {
+        const api = await fetch(url);
+        if (api.ok) {
+            const result = await api.json();
+            content = result.extract;
+        }
+    } catch (error) {
+        content = '';
+    }
+    return content;
 }
