@@ -267,6 +267,14 @@ a:visited {
     display: block;
 }
 
+#satelliteLink {
+    color: white;
+}
+
+#satellite {
+    padding-bottom: 10px;
+}
+
 .ui-dialog { z-index: 1001 !important ;}
 
 .ui-widget.ui-widget-content{
