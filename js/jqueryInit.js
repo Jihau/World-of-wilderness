@@ -6,8 +6,8 @@ $(document).ready(function() {
         draggable: false,
         resizable: false,
         autoOpen: false,
-        width: 550,
-        height: 450
+        width: "auto",
+        height: "auto"
     });
     $('#showDialog').click(function() {
         dialog.dialog("open");
@@ -27,4 +27,5 @@ function showImage(name, imageURL) {
     img.id = 'previewImage';
     dialogContainer.innerHTML = '';
     dialogContainer.appendChild(img);
+    $("span.ui-dialog-title").text(name);
 }

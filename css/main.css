@@ -291,11 +291,12 @@ a:visited {
 }
 
 .ui-button-icon-only .ui-icon {
-    background: rgba(26, 26, 26, 0.84);
     color: #ffffff;
     font-family: 'Tahoma', sans-serif;
 }
 
 #previewImage {
-
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
