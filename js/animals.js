@@ -72,3 +72,4 @@ async function getResults(taxon_id) {
         throw new Error('Something went wrong');
     }
 }
+

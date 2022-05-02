@@ -12,14 +12,14 @@ L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/ti
     accessToken: 'pk.eyJ1IjoiZXJra2lrZWtrb25lbiIsImEiOiJjbDJnOW9qMXEwMTJnM2puemloYzlrZ290In0.VjgzSrX13CE24Mqy3_a9VQ'
 }).addTo(map);
 
-function addMarker(x, y, name, markerOnClick) {
+function addMarker(x, y, name, image, observedOn, markerOnClick) {
     let marker = L.marker([x, y]);
     let clickFunction = () => {
         markerOnClick();
         focusConsoleMessage();
     }
     marker.on('click', clickFunction);
-    marker.addTo(markersLayer).bindPopup(!name ? "" : name);
+    marker.addTo(markersLayer).bindPopup(generateLeafletPopUp(!name ? "" : name, image, observedOn));
 }
 
 function clearMarkers(){
@@ -47,16 +47,17 @@ function addGeoJSONToMap(geoJSON, name, image, observedOn, markerOnClick) {
 }
 
 function generateLeafletPopUp(name, image, observedOn) {
-    return `<div class="dialogMarker"><div class="markerTitle">${name}</div><img src="${image}"><div class="observedOn">${observedOn}</div></div>`;
+    return `<div class="dialogMarker"><div class="markerTitle">${name}</div><img src="${image}" style="height: 75px; width: 75px"><div class="observedOn">${observedOn}</div></div>`;
 }
 
-async function getImages(){
+async function getImages(birdName, sciName, date, lat,lng, location){
     try {
-        const api = await fetch('https://dev-api.mol.org/2.x/species/images/list?scientificname=Eschrichtius%20robustus');
+        const api = await fetch(`https://dev-api.mol.org/2.x/species/images/list?scientificname=${sciName}`);
         if (api.ok) {
             const result = await api.json();
             let image = result[0].images[0].asset_url;
-            console.log(image);
+            let consoleMessage = `Name: ${birdName}\nLocation: ${location}\nCoordinates: ${lat}, ${lng}\nDate: ${date}\n****************************************************\n`;
+            addMarker(lat, lng, birdName, image, date, () => {consoleOutput.value += consoleMessage});
         }
     } catch (error){
         console.log(error);

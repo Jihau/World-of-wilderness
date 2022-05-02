@@ -28,7 +28,7 @@ async function birds(country) {
         method: 'GET', headers: myHeaders, redirect: 'follow'
     };
 
-    let lat, lng, birdName, location, date;
+    let lat, lng, birdName, location, date, image, sciName;
 
     try {
         const api = await fetch(`https://api.ebird.org/v2/data/obs/${country}/recent`, requestOptions);
@@ -38,10 +38,10 @@ async function birds(country) {
                 lat = result[i].lat;
                 lng = result[i].lng;
                 birdName = result[i].comName;
+                sciName = result[i].sciName;
                 location = result[i].locName;
                 date = result[i].obsDt;
-                let consoleMessage = `Name: ${birdName}\nLocation: ${location}\nCoordinates: ${lat}, ${lng}\nDate: ${date}\n****************************************************\n`;
-                addMarker(lat, lng, birdName, () => {consoleOutput.value += consoleMessage});
+                getImages(birdName, sciName, date, lat, lng, location);
             }
             return result;
         }
