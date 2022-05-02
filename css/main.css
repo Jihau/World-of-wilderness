@@ -244,3 +244,36 @@ a:visited {
 .visible{
     display: block;
 }
+
+.ui-dialog { z-index: 1001 !important ;}
+
+.ui-widget.ui-widget-content{
+    background: rgba(26, 26, 26, 0.84);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.47);
+    font-family: 'Jura', sans-serif;
+}
+
+.ui-dialog .ui-dialog-title {
+    background: rgba(26, 26, 26, 0);
+    color: #ffffff;
+    font-family: 'Jura', sans-serif;
+    border: none;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    background: rgba(26, 26, 26, 0);
+    color: #ffffff;
+    font-family: 'Jura', sans-serif;
+    border: none;
+}
+
+.ui-button-icon-only .ui-icon {
+    background: rgba(26, 26, 26, 0.84);
+    color: #ffffff;
+    font-family: 'Tahoma', sans-serif;
+}
+
+#previewImage {
+
+}
