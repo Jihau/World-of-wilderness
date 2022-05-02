@@ -244,3 +244,11 @@ a:visited {
 .visible{
     display: block;
 }
+
+#satelliteLink {
+    color: white;
+}
+
+#satellite {
+    padding-bottom: 10px;
+}

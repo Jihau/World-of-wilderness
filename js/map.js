@@ -15,7 +15,9 @@ function displayCountrySelector(){
 
 function showHideCountrySelector(show){
     let countrySelector = document.getElementById('countrySelector');
+    let satellite = document.getElementById('satellite');
     countrySelector.setAttribute('class', show ? 'visible' : 'hidden');
+    satellite.setAttribute('class', show ? 'visible' : 'hidden');
     clearMarkers();
     clearConsole();
 }
@@ -85,5 +87,4 @@ document.getElementById('birdsMenu').onchange = function (evt){
     }
 }*/
 //getImages().then();
-
 
