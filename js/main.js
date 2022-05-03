@@ -1,8 +1,10 @@
 let map = L.map('map').setView([0, 0], 1);
 map.setMaxBounds(map.getBounds());
-map.setMinZoom( map.getBoundsZoom( map.options.maxBounds ) );
+map.setMinZoom(map.getBoundsZoom(map.options.maxBounds));
 let consoleOutput = document.getElementById("console");
 let markersLayer = L.layerGroup().addTo(map);
+
+let cachedImages = [];
 L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamloYXUiLCJhIjoiY2wyZzM4MnptMDAybTNlbDVydWd4NG1tNCJ9.xX5DfnTTX30CKCHNJnlJpg', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -25,15 +27,13 @@ function addMarker(x, y, name, image, observedOn, markerOnClick, boolZoomToMarke
     }
 }
 
-function clearMarkers(){
+function clearMarkers() {
     markersLayer.clearLayers();
 }
 
 function addGeoJSONToMap(geoJSON, name, image, observedOn, imageMedium, markerOnClick) {
     const myStyle = {
-        "color": "#ff7800",
-        "weight": 5,
-        "opacity": 0.65
+        "color": "#ff7800", "weight": 5, "opacity": 0.65
     };
     let geoJson = L.geoJSON(geoJSON, {
         style: myStyle
@@ -52,17 +52,22 @@ function generateLeafletPopUp(name, image, observedOn, imageMedium) {
     return `<div class="dialogMarker"><div class="markerTitle">${name}</div><img src="${image}" alt="${name}" onclick="showImage('${name}','${imageMedium}')" style="height: 75px; width: 75px"><div class="observedOn">${observedOn}</div></div>`;
 }
 
-async function getImages(birdName, sciName, date, lat,lng, location, boolZoomToMarker){
+async function getImages(birdName, sciName, date, lat, lng, location, boolZoomToMarker) {
     try {
-        const api = await fetch(`https://dev-api.mol.org/2.x/species/images/list?scientificname=${sciName}`);
-        if (api.ok) {
-            const result = await api.json();
-            let image = result && result[0]? result[0].images:false;
-            image = image? result[0].images[0].asset_url : "";
-            let consoleMessage = `Name: ${birdName}\n\nLocation: ${location}\n\nCoordinates: ${lat}, ${lng}\n\nDate: ${date}`;
-            addMarker(lat, lng, birdName, image, date, () => displayInfoToConsole(consoleMessage, sciName), boolZoomToMarker);
+        let image = cachedImages[sciName];
+        if (!image) {
+            const api = await fetch(`https://dev-api.mol.org/2.x/species/images/list?scientificname=${sciName}`);
+            if (api.ok) {
+                const result = await api.json();
+                image = result && result[0] ? result[0].images : false;
+                image = image ? result[0].images[0].asset_url : false;
+            }
         }
-    } catch (error){
+        image = (!image || image == undefined)? "https://www.freeiconspng.com/uploads/error-icon-3.png" : image;
+        cachedImages[sciName] = image;
+        let consoleMessage = `Name: ${birdName}\n\nLocation: ${location}\n\nCoordinates: ${lat}, ${lng}\n\nDate: ${date}`;
+        addMarker(lat, lng, birdName, image, date, () => displayInfoToConsole(consoleMessage, sciName), boolZoomToMarker);
+    } catch (error) {
         console.log(error);
     }
 }
@@ -89,7 +94,7 @@ async function getWikipediaContent(title) {
 }
 
 function zoomToMarker(marker) {
-    let latLngs = [ marker.getLatLng() ];
+    let latLngs = [marker.getLatLng()];
     let markerBounds = L.latLngBounds(latLngs);
     map.fitBounds(markerBounds);
     map.setZoom(5);
