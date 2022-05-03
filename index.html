@@ -27,36 +27,12 @@
 </head>
 <body>
 <div id="dialog" title="Dialog Title">
-    <div id="dialogContainer"></div>
+    <div id="dialogContainer">
+        <img src="https://static.inaturalist.org/photos/28460319/medium.jpg" alt="Giraffa" id="previewImage">
+    </div>
 </div>
 <div class="body_content">
     <div class="page">
-        <div class="nav_menu">
-            <div class="pageHeader">
-                <img alt="head" src="img/style/header.png">
-            </div>
-            <div id="loader-container" class="hidden">
-                <div class="loader" id="spinner"></div>
-            </div>
-            <div id="main-menu" class="main-menu">
-                <button id="whalesButton"><img alt="orca" src="img/icons/orca-icon.png"></button>
-
-                <button id="birdsButton"><img alt="osprey" src="img/icons/osprey-icon.png"></button>
-
-                <button id="animalsButton"><img alt="fox" src="img/icons/fox-icon.png"></button>
-
-                <img alt="earth" src="img/icons/earth-icon.png">
-
-                <img alt="home-icon" src="img/icons/home.png">
-            </div>
-        </div>
-        <div class="hidden" id="satellite">
-            <a href="satellite.html" id="satelliteLink" target="_blank">Satellite data</a>
-        </div>
-        <div class="hidden" id="countrySelector">
-            <label for="birdsMenu">Choose a country:</label>
-            <select name="bird" id="birdsMenu"></select>
-        </div>
         <div class="image-container">
             <div id="images">
                 <img src="img/nature/forestpath.png" alt="forestpath" id="imageSource">
@@ -64,6 +40,32 @@
             </div>
         </div>
         <div class="pageContent">
+            <div class="nav_menu">
+                <div class="pageHeader">
+                    <img alt="head" src="img/style/header.png">
+                </div>
+                <div id="loader-container" class="hidden">
+                    <div class="loader" id="spinner"></div>
+                </div>
+                <div id="main-menu" class="main-menu">
+                    <button id="whalesButton"><img alt="orca" src="img/icons/orca-icon.png"></button>
+
+                    <button id="birdsButton"><img alt="osprey" src="img/icons/osprey-icon.png"></button>
+
+                    <button id="animalsButton"><img alt="fox" src="img/icons/fox-icon.png"></button>
+
+                    <img alt="earth" src="img/icons/earth-icon.png">
+
+                    <img alt="home-icon" src="img/icons/home.png">
+                </div>
+            </div>
+            <div class="hidden" id="satellite">
+                <a href="satellite.html" id="satelliteLink" target="_blank">Satellite data</a>
+            </div>
+            <div class="hidden" id="countrySelector">
+                <label for="birdsMenu">Choose a country:</label>
+                <select name="bird" id="birdsMenu"></select>
+            </div>
             <div id="map"></div>
         </div>
         <div class="console-container">
