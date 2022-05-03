@@ -65,15 +65,16 @@ async function getImages(birdName, sciName, date, lat, lng, location, boolZoomTo
         }
         image = (!image || image == undefined)? "https://www.freeiconspng.com/uploads/error-icon-3.png" : image;
         cachedImages[sciName] = image;
-        let consoleMessage = `Name: ${birdName}\n\nLocation: ${location}\n\nCoordinates: ${lat}, ${lng}\n\nDate: ${date}`;
-        addMarker(lat, lng, birdName, image, date, () => displayInfoToConsole(consoleMessage, sciName), boolZoomToMarker);
+        
+        let consoleMessage = `Name: ${birdName}\n\nLocation: ${location}\n\nCoordinates: ${lat}, ${lng}\n\nDate: ${date}\n\nInfo: ${await getWikipediaContent(sciName)}`;
+        addMarker(lat, lng, birdName, image, date, () => displayInfoToConsole(consoleMessage), boolZoomToMarker);
     } catch (error) {
         console.log(error);
     }
 }
 
-function displayInfoToConsole(message, scientificName) {
-    consoleOutput.value = message + "\n\nInfo:\n" + scientificName;
+function displayInfoToConsole(message) {
+    consoleOutput.value = message;
 }
 
 const lastItem = (path) => path.substring(path.lastIndexOf('/') + 1);

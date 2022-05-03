@@ -39,7 +39,7 @@ async function birds(country) {
                 sciName = result[i].sciName;
                 location = result[i].locName;
                 date = result[i].obsDt;
-                await getImages(birdName, sciName, date, lat, lng, location, (i == 0));
+                getImages(birdName, sciName, date, lat, lng, location, (i == 0));
             }
             return result;
         }
