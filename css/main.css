@@ -52,6 +52,15 @@ BODY {
     .satellitePageHeader {
         display: none;
     }
+    .console-container {
+        width: 600px;
+        height: 515px;
+        text-align: center;
+        margin: auto 200px;
+    }
+    #console {
+        min-width: 100%;
+    }
 }
 
 @media screen and (min-width: 1600px) {
@@ -66,11 +75,17 @@ BODY {
     .image-container {
         display: none;
     }
+    .console-container {
+        width: 600px;
+        height: 515px;
+        text-align: center;
+        margin: auto 200px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
     .console-container {
-        width: 245px;
+        width: 100%;
         height: 515px;
         text-align: center;
         margin-top: 174px;
@@ -100,6 +115,8 @@ BODY {
     }
     .satelliteContainer {
         max-width: 100%;
+        height: calc(100% - 150px);
+        min-height: 200px;
     }
 }
 
@@ -115,6 +132,9 @@ BODY {
         max-width: 1600px;
         display: flex;
         min-width: 300px;
+    }
+    #console {
+        width: 100%;
     }
 }
 
@@ -259,14 +279,12 @@ a:visited {
 }
 
 #console {
-    width: 100%;
     height: 100%;
     background-color: rgba(28, 28, 28, 0.75);
     color: rgba(255, 255, 255, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.58);
     font-family: 'Jura', sans-serif;
     resize: none;
-    text-align: justify;
     white-space: pre-line;
     padding: 5px;
 }
