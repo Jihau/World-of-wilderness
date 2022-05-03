@@ -1,5 +1,4 @@
-birdsButton.addEventListener('click', countries);
-
+countries();
 function countries(){
     let div = document.getElementById("birdsMenu");
     let list;

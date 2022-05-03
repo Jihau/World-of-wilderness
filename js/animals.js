@@ -16,6 +16,7 @@ function displayMammals() {
 
 function displayResults(taxon_id) {
     showHideCountrySelector(false);
+    map.setZoom(0);
     showSpinner();
     getResults(taxon_id).then(() => hideSpinner());
 }
