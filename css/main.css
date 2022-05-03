@@ -20,6 +20,10 @@ BODY {
     border-style: solid;
 }
 
+#countrySelector {
+    color: white;
+}
+
 .nav_menu {
     width: 100%;
     text-align: center;

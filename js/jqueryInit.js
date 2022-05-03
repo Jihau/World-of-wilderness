@@ -1,7 +1,7 @@
 $(document).ready(function() {
     let dialog = $("#dialog");
     dialog.dialog({
-        title: "Dialog",
+        title: "Image Viewer",
         modal: true,
         draggable: false,
         resizable: false,
@@ -9,10 +9,19 @@ $(document).ready(function() {
         width: "auto",
         height: "auto"
     });
-    dialog.dialog("open");
-    dialog.dialog("close");
+    let dialogBirds = $("#dialogBirds");
+    dialogBirds.dialog({
+        title: "Select a Country",
+        modal: true,
+        draggable: false,
+        resizable: false,
+        autoOpen: false,
+        width: 400,
+        height: 150
+    });
     $(document).on('click', ".ui-widget-overlay", function() {
         dialog.dialog("close");
+        dialogBirds.dialog("close");
     });
 });
 

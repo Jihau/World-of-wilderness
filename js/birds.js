@@ -1,28 +1,24 @@
-
-// TODO: Remove test marker
-//  L.marker([60.17604, 24.9386]).addTo(map);
-
-
-
 let birdsButton = document.getElementById('birdsButton');
 birdsButton.addEventListener('click', displayCountrySelector);
+let lastSelected = '0';
+let dialogBirds = $("#dialogBirds");
 
 function displayCountrySelector(){
     showHideCountrySelector(true);
-    let birdsMenu = document.getElementById('birdsMenu');
-    birdsMenu.value = "0";
 }
 
 function showHideCountrySelector(show){
-    let countrySelector = document.getElementById('countrySelector');
-    let satellite = document.getElementById('satellite');
-    countrySelector.setAttribute('class', show ? 'visible' : 'hidden');
-    satellite.setAttribute('class', show ? 'visible' : 'hidden');
+    dialogBirds.dialog(show? "open":"close");
+    if (show) {
+        document.getElementById("birdsMenu").value = lastSelected;
+    }
     clearMarkers();
     clearConsole();
 }
 
 async function birds(country) {
+    dialogBirds.dialog("close");
+    lastSelected = country;
     let myHeaders = new Headers();
     myHeaders.append('X-eBirdApiToken', 'p291e2j3pm2c');
 
@@ -43,7 +39,7 @@ async function birds(country) {
                 sciName = result[i].sciName;
                 location = result[i].locName;
                 date = result[i].obsDt;
-                getImages(birdName, sciName, date, lat, lng, location);
+                await getImages(birdName, sciName, date, lat, lng, location, (i == 0));
             }
             return result;
         }
@@ -62,6 +58,7 @@ document.getElementById('birdsMenu').onchange = function (evt){
     let value = evt.target.value;
     clearMarkers();
     clearConsole();
-    birds(value).then();
+    showSpinner();
+    birds(value).then(() => hideSpinner());
 }
 

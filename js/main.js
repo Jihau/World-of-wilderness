@@ -12,14 +12,17 @@ L.tileLayer('https://api.mapbox.com/styles/v1/jihau/cl2gazbo0000u16o66jok0xt4/ti
     accessToken: 'pk.eyJ1IjoiZXJra2lrZWtrb25lbiIsImEiOiJjbDJnOW9qMXEwMTJnM2puemloYzlrZ290In0.VjgzSrX13CE24Mqy3_a9VQ'
 }).addTo(map);
 
-function addMarker(x, y, name, image, observedOn, markerOnClick) {
+function addMarker(x, y, name, image, observedOn, markerOnClick, boolZoomToMarker) {
     let marker = L.marker([x, y]);
     let clickFunction = () => {
         markerOnClick();
         focusConsoleMessage();
     }
     marker.on('click', clickFunction);
-    marker.addTo(markersLayer).bindPopup(generateLeafletPopUp(!name ? "" : name, image, observedOn));
+    marker.addTo(markersLayer).bindPopup(generateLeafletPopUp(!name ? "" : name, image, observedOn, image));
+    if (boolZoomToMarker) {
+        zoomToMarker(marker);
+    }
 }
 
 function clearMarkers(){
@@ -49,18 +52,23 @@ function generateLeafletPopUp(name, image, observedOn, imageMedium) {
     return `<div class="dialogMarker"><div class="markerTitle">${name}</div><img src="${image}" alt="${name}" onclick="showImage('${name}','${imageMedium}')" style="height: 75px; width: 75px"><div class="observedOn">${observedOn}</div></div>`;
 }
 
-async function getImages(birdName, sciName, date, lat,lng, location){
+async function getImages(birdName, sciName, date, lat,lng, location, boolZoomToMarker){
     try {
         const api = await fetch(`https://dev-api.mol.org/2.x/species/images/list?scientificname=${sciName}`);
         if (api.ok) {
             const result = await api.json();
-            let image = result[0].images[0].asset_url;
-            let consoleMessage = `Name: ${birdName}\n\nLocation: ${location}\n\nCoordinates: ${lat}, ${lng}\n\nDate: ${date}\n\ninfo: ${await getWikipediaContent(birdName)}\n`;
-            addMarker(lat, lng, birdName, image, date, () => {consoleOutput.value = consoleMessage});
+            let image = result && result[0]? result[0].images:false;
+            image = image? result[0].images[0].asset_url : "";
+            let consoleMessage = `Name: ${birdName}\n\nLocation: ${location}\n\nCoordinates: ${lat}, ${lng}\n\nDate: ${date}`;
+            addMarker(lat, lng, birdName, image, date, () => displayInfoToConsole(consoleMessage, sciName), boolZoomToMarker);
         }
     } catch (error){
         console.log(error);
     }
+}
+
+function displayInfoToConsole(message, scientificName) {
+    consoleOutput.value = message + "\n\nInfo:\n" + scientificName;
 }
 
 const lastItem = (path) => path.substring(path.lastIndexOf('/') + 1);
@@ -78,4 +86,11 @@ async function getWikipediaContent(title) {
         content = '';
     }
     return content;
+}
+
+function zoomToMarker(marker) {
+    let latLngs = [ marker.getLatLng() ];
+    let markerBounds = L.latLngBounds(latLngs);
+    map.fitBounds(markerBounds);
+    map.setZoom(5);
 }

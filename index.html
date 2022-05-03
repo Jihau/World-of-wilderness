@@ -15,7 +15,7 @@
             integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
             src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" defer></script>
     <script defer src="js/main.js"></script>
-    <script defer src="js/map.js"></script>
+    <script defer src="js/birds.js"></script>
     <script defer src="js/animals.js"></script>
     <script defer src="js/console.js"></script>
     <script defer src="js/countries.js"></script>
@@ -26,9 +26,20 @@
     <script defer src="js/jqueryInit.js"></script>
 </head>
 <body>
-<div id="dialog" title="Dialog Title">
+<div id="dialog">
     <div id="dialogContainer">
-        <img src="https://static.inaturalist.org/photos/28460319/medium.jpg" alt="Giraffa" id="previewImage">
+        <img src="https://inaturalist-open-data.s3.amazonaws.com/photos/1635/medium.jpg" alt="Giraffa" id="previewImage">
+    </div>
+</div>
+<div id="dialogBirds">
+    <div id="dialogBirdsContainer">
+        <div id="satellite">
+            <a href="satellite.html" id="satelliteLink" target="_blank">Satellite data</a>
+        </div>
+        <div id="countrySelector">
+            <label for="birdsMenu">Choose a country:</label>
+            <select name="bird" id="birdsMenu"></select>
+        </div>
     </div>
 </div>
 <div class="body_content">
@@ -36,7 +47,6 @@
         <div class="image-container">
             <div id="images">
                 <img src="img/nature/forestpath.png" alt="forestpath" id="imageSource">
-
             </div>
         </div>
         <div class="pageContent">
@@ -58,13 +68,6 @@
 
                     <img alt="home-icon" src="img/icons/home.png">
                 </div>
-            </div>
-            <div class="hidden" id="satellite">
-                <a href="satellite.html" id="satelliteLink" target="_blank">Satellite data</a>
-            </div>
-            <div class="hidden" id="countrySelector">
-                <label for="birdsMenu">Choose a country:</label>
-                <select name="bird" id="birdsMenu"></select>
             </div>
             <div id="map"></div>
         </div>
