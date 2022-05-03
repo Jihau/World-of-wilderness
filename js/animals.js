@@ -72,7 +72,7 @@ async function getResults(taxon_id) {
                 content = mapDescription[content];
                 content = (content == undefined) ? 'Not Found' : content;
                 observedOn = record.observed_on_details.date;
-                let consoleMessage = `Name: ${whaleName}\n\nCoordinates:\n${lat}, ${lng}\n\nInfo:\n ${content}\n`;
+                let consoleMessage = `NAME:\n ${whaleName}\n\nCOORDINATES:\n${lat}, ${lng}\n\nINFO:\n ${content}\n`;
                 addGeoJSONToMap(record.geojson, whaleName, image_url, observedOn, image_url_medium, () => {
                     consoleOutput.value = consoleMessage
                 })
