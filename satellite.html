@@ -5,23 +5,17 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <link href="css/main.css" rel="stylesheet">
-    <script defer src="js/main.js"></script>
 </head>
 <body>
-    <div class="body_content">
-        <div class="page">
-            <div class="nav_menu">
-                <div class="pageHeader">
-                    <img alt="head" src="img/style/header.png">
-                </div>
-                <div id="loader-container" class="hidden">
-                    <div class="loader" id="spinner"></div>
-                </div>
-            </div>
-            <iframe src="https://satelliitti.laji.fi/?lang=en&id=JX.60679&speed=30&zoom=11&loc=[61.194889777986376,21.499214172363285]&layer=0&start_time=2018-08-09T12:00:00%2B00:00&iframe=true" style="height: 700px; width: 100%">
-
-            </iframe>
-        </div>
-    </div>
+<div class="satellitePageHeader">
+<div class="pageHeader">
+    <img alt="head" src="img/style/header.png">
+</div>
+</div>
+<div class="satellitePage">
+    <iframe class="satelliteContainer"
+            src="https://satelliitti.laji.fi/?lang=en&id=JX.60679&speed=30&zoom=11&loc=[61.194889777986376,21.499214172363285]&layer=0&start_time=2018-08-09T12:00:00%2B00:00&iframe=true">
+    </iframe>
+</div>
 </body>
 </html>
