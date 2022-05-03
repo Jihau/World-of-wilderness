@@ -1,4 +1,4 @@
-let map = L.map('map').setView([30, 1], 1.5);
+let map = L.map('map').setView([0, 0], 1);
 map.setMaxBounds(map.getBounds());
 map.setMinZoom( map.getBoundsZoom( map.options.maxBounds ) );
 let consoleOutput = document.getElementById("console");

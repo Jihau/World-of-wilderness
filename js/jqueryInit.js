@@ -9,9 +9,8 @@ $(document).ready(function() {
         width: "auto",
         height: "auto"
     });
-    $('#showDialog').click(function() {
-        dialog.dialog("open");
-    });
+    dialog.dialog("open");
+    dialog.dialog("close");
     $(document).on('click', ".ui-widget-overlay", function() {
         dialog.dialog("close");
     });

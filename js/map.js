@@ -56,7 +56,6 @@ function focusConsoleMessage(){
     const textarea = document.getElementById('console');
     const end = textarea.value.length;
     textarea.setSelectionRange(end, end);
-    textarea.focus();
 }
 
 document.getElementById('birdsMenu').onchange = function (evt){
@@ -65,26 +64,4 @@ document.getElementById('birdsMenu').onchange = function (evt){
     clearConsole();
     birds(value).then();
 }
-
-/*async function whales() {
-    let lat, lng, name, content;
-    try {
-        const api = await fetch('https://api.mol.org/1.x/species/info?scientificname=Eschrichtius%20robustus');
-        if (api.ok) {
-            const result = await api.json();
-            for (let i = 0; i < result.length; i++) {
-                let record = result[i];
-                lat = record.bounds.northEast.lat;
-                lng = record.bounds.northEast.lng;
-                name = record.family[0].name;
-                content = record.info[0].content;
-                let consoleMessage = `Name: ${name}\nCoordinates: ${lat}, ${lng}\nInfo: ${content}\n****************************************************\n`;
-                addMarker(lat, lng, name, () => {consoleOutput.value = consoleMessage});
-            }
-        }
-    } catch (error) {
-        throw new Error('Something went wrong');
-    }
-}*/
-//getImages().then();
 
