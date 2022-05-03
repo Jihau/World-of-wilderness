@@ -100,6 +100,8 @@ BODY {
     }
     .satelliteContainer {
         max-width: 100%;
+        height: calc(100% - 150px);
+        min-height: 200px;
     }
 }
 
