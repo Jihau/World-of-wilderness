@@ -197,7 +197,8 @@ BODY {
 #homeButton{
     background-color: transparent;
     border: none;
-    padding-bottom: 80px;
+    padding-top: 15px;
+    padding-bottom: 10px;
 }
 
 .main-menu {
@@ -416,7 +417,10 @@ a:visited {
     box-sizing: border-box;
     text-align: center;
     padding: 80px;
-    margin: auto 200px;
+    margin: 80px;
+    padding: 20px;
+    flex: 1;
+    display: flex;
 }
 
 .aboutUsImgs {
@@ -424,36 +428,34 @@ a:visited {
     flex-direction: row;
     align-items: center;
     width: 100%;
+    height: auto;
 }
 
 #josia {
-    width: 250px;
-    height: 250px;
+    width: 50%;
+    height: auto;
     padding: 20px;
 }
 .josiaText {
     justify-content: center;
-    padding: 80px;
 }
 
 #johanna {
-    width: 250px;
-    height: 250px;
+    width: 50%;
+    height: auto;
     padding: 20px;
 }
 .johannaText {
     justify-content: center;
-    padding: 80px;
 }
 
 #valtteri {
-    width: 250px;
-    height: 250px;
+    width: 50%;
+    height: auto;
     padding: 20px;
 }
 .nipaText {
     justify-content: center;
-    padding: 80px;
 }
 
 #josiaInfo {
