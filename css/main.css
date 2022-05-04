@@ -28,6 +28,10 @@ BODY {
     width: 100%;
     text-align: center;
     min-height: 172px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 /*RESPONSIVE IF-LAUSE ELI KUN SIVUSTOA KUTISTETAAN NÄMÄ EHDOT TÄYTTYVÄT*/
 @media screen and (max-width: 800px) {
@@ -83,6 +87,9 @@ BODY {
         text-align: center;
         margin-top: 174px;
     }
+    #console {
+        max-width: 250px;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -100,6 +107,9 @@ BODY {
         text-align: center;
         margin-top: 20px;
         margin-bottom: 50px;
+    }
+    #console {
+        max-width: 800px;
     }
 }
 
@@ -157,26 +167,9 @@ BODY {
     padding-bottom: 10px;
 }
 
-#birdsButton{
+#main-menu button {
     background-color: transparent;
     border: none;
-}
-
-#animalsButton{
-    background-color: transparent;
-    border: none;
-}
-
-#whalesButton{
-    background-color: transparent;
-    border: none;
-}
-
-#homeButton{
-    background-color: transparent;
-    border: none;
-    padding-top: 5px;
-    padding-bottom: 10px;
 }
 
 .main-menu {
@@ -271,7 +264,6 @@ a:visited {
 #console {
     height: 100%;
     width: 100%;
-    max-width: 800px;
     background-color: rgba(28, 28, 28, 0.75);
     color: rgba(255, 255, 255, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.58);
@@ -355,90 +347,3 @@ a:visited {
     object-fit: contain;
 }
 
-.aboutPage {
-    margin: auto 310px;
-    display: flex;
-    flex-direction: column;
-}
-.aboutPageHeader {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    align-items: center;
-    opacity: 0.98;
-}
-
-.aboutPageHeader img {
-    max-width: 550px;
-    width: 100%;
-}
-
-.aboutPageHeader button {
-    max-width: 50px;
-    max-height: 50px;
-    margin: auto 300px;
-}
-.aboutPage {
-    margin-left: 300px;
-}
-
-.aboutContent {
-    align-items: center;
-    background-color: rgba(21, 21, 21, 0.51);
-    float: left;
-    clear: none;
-    min-height: 800px;
-    box-sizing: border-box;
-    text-align: center;
-    padding: 20px;
-    margin: 40px;
-    flex: 1;
-    display: flex;
-}
-
-.aboutUsImgs {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: auto;
-}
-
-#josia {
-    width: 50%;
-    height: auto;
-    padding: 20px;
-}
-.josiaText {
-    justify-content: center;
-}
-
-#johanna {
-    width: 50%;
-    height: auto;
-    padding: 20px;
-}
-.johannaText {
-    justify-content: center;
-}
-
-#valtteri {
-    width: 50%;
-    height: auto;
-    padding: 20px;
-}
-.nipaText {
-    justify-content: center;
-}
-
-#josiaInfo {
-    margin: 10px;
-}
-
-#johannaInfo {
-    margin: 10px;
-}
-
-#valtteriInfo {
-    margin: 10px;
-}

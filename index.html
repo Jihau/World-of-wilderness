@@ -5,6 +5,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
@@ -19,6 +20,7 @@
     <script defer src="js/animals.js"></script>
     <script defer src="js/console.js"></script>
     <script defer src="js/countries.js"></script>
+    <script defer src="js/menu.js"></script>
     <script defer src="js/images.js"></script>
     <link href="jquery-ui/jquery-ui.css" rel="stylesheet">
     <script src="jquery-ui/external/jquery/jquery.js"></script>
@@ -44,7 +46,7 @@
 </div>
 <div class="body_content">
     <div class="page">
-        <div class="image-container">
+        <div id="imageContainer" class="image-container">
             <div id="images">
                 <img src="img/nature/forestpath.png" alt="forestpath" id="imageSource">
             </div>
@@ -66,15 +68,37 @@
 
                     <img alt="earth" src="img/icons/earth-icon.png">
 
-                    <img alt="home-icon" src="img/icons/home.png">
+                    <button id="homeButton"><img alt="home-icon" src="img/icons/home.png"></button>
                 </div>
             </div>
             <div id="map"></div>
             <iframe id="satelliteContainer" class="satelliteContainer hidden"
                     src="https://satelliitti.laji.fi/?lang=en&idiframe=true">
             </iframe>
+            <div id="home" class="hidden">
+                <div class="aboutUsImgs">
+                    <div class="article">
+                        <img alt="josia" src="img/us/josia.png">
+                        <br>
+                        <b>Josia Orava</b>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida vehicula dolor et blandit. Nam lobortis et turpis lobortis facilisis. Praesent non ante ac magna gravida ornare non nec odio. In hac habitasse platea dictumst. Proin dignissim, neque varius congue semper, lacus mauris bibendum arcu.</p>
+                    </div>
+                    <div class="article">
+                        <img alt="johanna" src="img/us/johanna.png">
+                        <br>
+                        <b>Johanna Toivanen</b>
+                        <p>Johanna is 30 years old student from Espoo. She is aiming as a full stack developer and is planning to have a career in the US. She likes gaming, digital arts and programming. Her favourite thing besides programming is playing piano. Johanna has a cat called Michael. Her favourite food is sushi.</p>
+                    </div>
+                    <div class="article">
+                        <img alt="valtteri" src="img/us/valtteri.png">
+                        <br>
+                        <b>Valtteri Niininen</b>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida vehicula dolor et blandit. Nam lobortis et turpis lobortis facilisis. Praesent non ante ac magna gravida ornare non nec odio. In hac habitasse platea dictumst. Proin dignissim, neque varius congue semper, lacus mauris bibendum arcu.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="console-container">
+        <div id="consoleContainer" class="console-container">
             <textarea rows="31" readonly id="console"></textarea>
             <button id="clear" onclick="clearConsole()">Clear console</button>
     </div>
