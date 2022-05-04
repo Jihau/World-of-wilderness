@@ -7,10 +7,12 @@ let animalsButton = document.getElementById('animalsButton');
 animalsButton.addEventListener('click', displayMammals);
 
 function displayWhales() {
+    showMap();
     displayResults(taxon_id_Whales);
 }
 
 function displayMammals() {
+    showMap();
     displayResults(taxon_id_Mammals);
 }
 
