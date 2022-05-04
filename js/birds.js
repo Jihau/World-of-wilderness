@@ -16,22 +16,6 @@ function showHideCountrySelector(show){
     clearConsole();
 }
 
-function showMap() {
-    let mapContainer = document.getElementById('map');
-    let satelliteContainer = document.getElementById('satelliteContainer');
-    mapContainer.classList.remove('hidden');
-    satelliteContainer.classList.add('hidden');
-    dialogBirds.dialog("close");
-}
-
-function showSatellite() {
-    let mapContainer = document.getElementById('map');
-    let satelliteContainer = document.getElementById('satelliteContainer');
-    mapContainer.classList.add('hidden');
-    satelliteContainer.classList.remove('hidden');
-    dialogBirds.dialog("close");
-}
-
 async function birds(country) {
     showMap();
     lastSelected = country;
