@@ -23,9 +23,12 @@ BODY {
 }
 
 .aboutPage {
-    margin: auto 310px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 370px;
 }
 
 .aboutPageHeader {
@@ -35,81 +38,42 @@ BODY {
     box-sizing: border-box;
     align-items: center;
     opacity: 0.98;
+    max-width: 550px;
+    margin: 20px;
 }
 
 .aboutPageHeader img {
-    max-width: 550px;
+    object-fit: contain;
     width: 100%;
-    align-items: center;
 }
 
 .aboutPageHeader button {
     max-width: 50px;
     max-height: 50px;
-    margin: auto 300px;
-}
-.aboutPage {
-    margin-left: 300px;
-}
-
-.aboutContent {
-    align-items: center;
-    background-color: rgba(21, 21, 21, 0.51);
-    float: left;
-    clear: none;
-    min-height: 800px;
-    box-sizing: border-box;
-    text-align: center;
-    padding: 80px;
-    margin: auto 200px;
 }
 
 .aboutUsImgs {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    margin: 20px;
 }
 
-#josia {
+.article img {
     width: 250px;
     height: 250px;
+}
+
+.article {
+    width: 290px;
     padding: 20px;
+    min-width: 290px;
+    background-color: rgba(21, 21, 21, 0.51);
 }
 
-.josiaText {
-    justify-content: center;
-    padding: 80px;
-}
-
-#johanna {
-    width: 250px;
-    height: 250px;
-    padding: 20px;
-}
-.johannaText {
-    justify-content: center;
-    padding: 80px;
-}
-
-#valtteri {
-    width: 250px;
-    height: 250px;
-    padding: 20px;
-}
-.nipaText {
-    justify-content: center;
-    padding: 80px;
-}
-
-#josiaInfo {
+.article p {
     margin: 10px;
-}
-
-#johannaInfo {
-    margin: 10px;
-}
-
-#valtteriInfo {
-    margin: 10px;
+    text-align: justify;
+    text-justify: inter-word;
 }
