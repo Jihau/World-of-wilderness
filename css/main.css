@@ -49,6 +49,7 @@ BODY {
         display: flex;
         min-width: 300px;
     }
+
     .satellitePageHeader {
         display: none;
     }
@@ -153,6 +154,10 @@ BODY {
 .satellitePageHeader {
     margin: auto 600px;
 }
+
+#aboutUsPageHeader{
+    margin: auto 680px;
+}
 /*TÄMÄ ON IFRAMEN LUOKKA ELI KAIKKI MUOTOILU TÄHÄN JOS TARVE*/
 .pageContent {
     float: left;
@@ -189,9 +194,15 @@ BODY {
     border: none;
 }
 
+#homeButton{
+    background-color: transparent;
+    border: none;
+    padding-bottom: 80px;
+}
+
 .main-menu {
     opacity: 0.9;
-    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 /*ÄLÄ KOSKE*/
 .body_content{
@@ -365,4 +376,94 @@ a:visited {
     height: 100%;
     width: 100%;
     object-fit: contain;
+}
+
+.aboutPage {
+    margin: auto 310px;
+    display: flex;
+    flex-direction: column;
+}
+.aboutPageHeader {
+    display: flex;
+    flex-direction: column;
+    clear: none;
+    box-sizing: border-box;
+    align-items: center;
+    opacity: 0.98;
+}
+
+.aboutPageHeader img {
+    max-width: 550px;
+    width: 100%;
+    align-items: center;
+}
+
+.aboutPageHeader button {
+    max-width: 50px;
+    max-height: 50px;
+    margin: auto 300px;
+}
+.aboutPage {
+    margin-left: 300px;
+}
+
+.aboutContent {
+    align-items: center;
+    background-color: rgba(21, 21, 21, 0.51);
+    float: left;
+    clear: none;
+    min-height: 800px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 80px;
+    margin: auto 200px;
+}
+
+.aboutUsImgs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+#josia {
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+}
+.josiaText {
+    justify-content: center;
+    padding: 80px;
+}
+
+#johanna {
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+}
+.johannaText {
+    justify-content: center;
+    padding: 80px;
+}
+
+#valtteri {
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+}
+.nipaText {
+    justify-content: center;
+    padding: 80px;
+}
+
+#josiaInfo {
+    margin: 10px;
+}
+
+#johannaInfo {
+    margin: 10px;
+}
+
+#valtteriInfo {
+    margin: 10px;
 }
