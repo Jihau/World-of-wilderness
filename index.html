@@ -34,7 +34,7 @@
 <div id="dialogBirds">
     <div id="dialogBirdsContainer">
         <div id="satellite">
-            <a href="satellite.html" id="satelliteLink" target="_blank">Satellite data</a>
+            <a href="javascript:showSatellite()" id="satelliteLink">Satellite data</a>
         </div>
         <div id="countrySelector">
             <label for="birdsMenu">Choose a country:</label>
@@ -70,6 +70,9 @@
                 </div>
             </div>
             <div id="map"></div>
+            <iframe id="satelliteContainer" class="satelliteContainer hidden"
+                    src="https://satelliitti.laji.fi/?lang=en&idiframe=true">
+            </iframe>
         </div>
         <div class="console-container">
             <textarea rows="31" readonly id="console"></textarea>
