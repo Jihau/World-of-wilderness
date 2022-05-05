@@ -18,6 +18,7 @@ function showMap() {
     consoleContainer.classList.remove('hidden');
     aboutContainer.classList.add('hidden');
     dialogBirds.dialog("close");
+    clearConsole();
 }
 
 function showSatellite() {
@@ -28,7 +29,6 @@ function showSatellite() {
     aboutContainer.classList.add('hidden');
     dialogBirds.dialog("close");
 }
-
 
 function showHome() {
     showMap();
@@ -42,5 +42,4 @@ function showAboutUs() {
     imageContainer.classList.add('hidden');
     consoleContainer.classList.add('hidden');
     dialogBirds.dialog("close");
-
 }
