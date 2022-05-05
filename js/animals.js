@@ -7,16 +7,17 @@ let animalsButton = document.getElementById('animalsButton');
 animalsButton.addEventListener('click', displayMammals);
 
 function displayWhales() {
+    showMap();
     displayResults(taxon_id_Whales);
 }
 
 function displayMammals() {
+    showMap();
     displayResults(taxon_id_Mammals);
 }
 
 function displayResults(taxon_id) {
     showHideCountrySelector(false);
-    map.setZoom(0);
     showSpinner();
     getResults(taxon_id).then(() => hideSpinner());
 }
@@ -72,7 +73,7 @@ async function getResults(taxon_id) {
                 content = mapDescription[content];
                 content = (content == undefined) ? 'Not Found' : content;
                 observedOn = record.observed_on_details.date;
-                let consoleMessage = `NAME:\n ${whaleName}\n\nCOORDINATES:\n${lat}, ${lng}\n\nINFO:\n ${content}\n`;
+                let consoleMessage = `NAME:\n${whaleName}\n\nCOORDINATES:\n${lat}, ${lng}\n\nINFO:\n${content}\n`;
                 addGeoJSONToMap(record.geojson, whaleName, image_url, observedOn, image_url_medium, () => {
                     consoleOutput.value = consoleMessage
                 })

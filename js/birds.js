@@ -17,7 +17,7 @@ function showHideCountrySelector(show){
 }
 
 async function birds(country) {
-    dialogBirds.dialog("close");
+    showMap();
     lastSelected = country;
     let myHeaders = new Headers();
     myHeaders.append('X-eBirdApiToken', 'p291e2j3pm2c');
