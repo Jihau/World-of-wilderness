@@ -25,7 +25,6 @@ BODY {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
     min-width: 370px;
 }
@@ -73,6 +72,6 @@ BODY {
 
 .article p {
     margin: 10px;
-    text-align: justify;
+    text-align: center;
     text-justify: inter-word;
 }
