@@ -1,11 +1,11 @@
-let imageSources = ['../img/nature/forestpath.png', '../img/nature/green_flowers.png', '../img/nature/green_leafs.png', '../img/nature/white_flowers.png'];
+let imageSources = ['../img/nature/capy.jpg', '../img/nature/green_flowers.png', '../img/nature/cow.png', '../img/nature/white_flowers.png', '../img/nature/crocos.png' , '../img/nature/cat1.png', '../img/nature/leopard.png', '../img/nature/forestpath.jpg'];
 
-let index = 0;
+let index = 1;
 const imgElement = document.getElementById("imageSource");
 
 function change() {
    imgElement.src = imageSources[index];
-   index > 2 ? index = 0 : index++;
+   index > 6 ? index = 1 : index++;
 }
 
 window.onload = function () {

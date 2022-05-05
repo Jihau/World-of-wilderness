@@ -63,7 +63,7 @@ async function getImages(birdName, sciName, date, lat, lng, location, boolZoomTo
                 image = image ? result[0].images[0].asset_url : false;
             }
         }
-        image = (!image || image == undefined)? "https://www.freeiconspng.com/uploads/error-icon-3.png" : image;
+        image = (!image || image == undefined)? 'https://cdn.discordapp.com/attachments/953933150638202930/971701242642444348/icons8-no-camera-100.png' : image;
         cachedImages[sciName] = image;
         
         let consoleMessage = `NAME:\n${birdName}\n\nLOCATION:\n${location}\n\nCOORDINATES:\n${lat}, ${lng}\n\nDATE:\n${date}\n\nINFO:\n${await getWikipediaContent(sciName)}`;
