@@ -30,7 +30,6 @@ function showSatellite() {
     dialogBirds.dialog("close");
 }
 
-
 function showHome() {
     showMap();
     clearMarkers();
@@ -43,5 +42,4 @@ function showAboutUs() {
     imageContainer.classList.add('hidden');
     consoleContainer.classList.add('hidden');
     dialogBirds.dialog("close");
-
 }
