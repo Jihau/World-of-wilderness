@@ -66,7 +66,7 @@ async function getImages(birdName, sciName, date, lat, lng, location, boolZoomTo
         image = (!image || image == undefined)? "https://www.freeiconspng.com/uploads/error-icon-3.png" : image;
         cachedImages[sciName] = image;
         
-        let consoleMessage = `Name: ${birdName}\n\nLocation: ${location}\n\nCoordinates: ${lat}, ${lng}\n\nDate: ${date}\n\nInfo: ${await getWikipediaContent(sciName)}`;
+        let consoleMessage = `NAME: ${birdName}\n\nLOCATION: ${location}\n\nCOORDINATES: ${lat}, ${lng}\n\nDATE: ${date}\n\nINFO: ${await getWikipediaContent(sciName)}`;
         addMarker(lat, lng, birdName, image, date, () => displayInfoToConsole(consoleMessage), boolZoomToMarker);
     } catch (error) {
         console.log(error);
