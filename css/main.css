@@ -172,6 +172,11 @@ BODY {
     border: none;
 }
 
+.buttonImage:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
 .main-menu {
     opacity: 0.9;
     margin-bottom: 5px;
